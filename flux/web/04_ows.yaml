@@ -17,13 +17,13 @@ spec:
     name: datacube
     version: 0.17.10
   valueFileSecrets:
-    - name: ows
+  - name: ows
   values:
     image:
       # Docker Hub: https://hub.docker.com/r/opendatacube/wms
       # Source Repository: https://github.com/opendatacube/datacube-ows
       registry: docker.io
-      tag: "0.13.2"
+      tag: "1.8.5"
       repository: opendatacube/ows
       pullPolicy: IfNotPresent
 #    Injected by Flux - using secrets
@@ -40,29 +40,29 @@ spec:
 #      annotations:
 #        iam.amazonaws.com/role: ${role_name}
       dockerArgs:
-        - "gunicorn"
-        - "-b"
-        - "0.0.0.0:8000"
-        - "-w"
-        - "3"
-        - "--threads=3"
-        - "-k"
-        - "gevent"
-        - "--timeout"
-        - "121"
-        - "--graceful-timeout"
-        - "121"
-        - "--keep-alive"
-        - "5"
-        - "--pid"
-        - "gunicorn.pid"
-        - "--backlog"
-        - "64"
-        - "--log-level"
-        - "info"
-        - "--worker-tmp-dir"
-        - "/dev/shm"
-        - "datacube_ows.wsgi"
+      - "gunicorn"
+      - "-b"
+      - "0.0.0.0:8000"
+      - "-w"
+      - "3"
+      - "--threads=3"
+      - "-k"
+      - "gevent"
+      - "--timeout"
+      - "121"
+      - "--graceful-timeout"
+      - "121"
+      - "--keep-alive"
+      - "5"
+      - "--pid"
+      - "gunicorn.pid"
+      - "--backlog"
+      - "64"
+      - "--log-level"
+      - "info"
+      - "--worker-tmp-dir"
+      - "/dev/shm"
+      - "datacube_ows.wsgi"
       enabled: true
       externalPort: 80
       internalPort: 8000
@@ -79,18 +79,18 @@ spec:
       readinessProbe:
         exec:
           command:
-            - "/bin/sh"
-            - "-c"
-            - "curl --silent 'http://localhost:8000/ping'"
+          - "/bin/sh"
+          - "-c"
+          - "curl --silent 'http://localhost:8000/ping'"
         periodSeconds: 30
         initialDelaySeconds: 10
         timeoutSeconds: 5
       livenessProbe:
         exec:
           command:
-            - "/bin/sh"
-            - "-c"
-            - "curl --silent 'http://localhost:8000/ping'"
+          - "/bin/sh"
+          - "-c"
+          - "curl --silent 'http://localhost:8000/ping'"
         periodSeconds: 30
         initialDelaySeconds: 10
         timeoutSeconds: 5
@@ -135,8 +135,8 @@ spec:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
-            - matchExpressions:
-                - key: nodetype
-                  operator: NotIn
-                  values:
-                    - spot
+          - matchExpressions:
+            - key: nodetype
+              operator: NotIn
+              values:
+              - spot
