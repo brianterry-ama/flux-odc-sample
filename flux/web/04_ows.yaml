@@ -23,7 +23,7 @@ spec:
       # Docker Hub: https://hub.docker.com/r/opendatacube/wms
       # Source Repository: https://github.com/opendatacube/datacube-ows
       registry: docker.io
-      tag: "1.8.5"
+      tag: "1.8.5-9-gc945d41"
       repository: opendatacube/ows
       pullPolicy: IfNotPresent
 #    Injected by Flux - using secrets
