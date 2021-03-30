@@ -114,7 +114,7 @@ spec:
         # Source Repository: https://github.com/GeoscienceAustralia/dea-config
         registry: docker.io
         repository: geoscienceaustralia/dea-datakube-config
-        tag: "1.5.7-263-g0e0f480"
+        tag: "1.5.7-265-g41a6cdc"
         pullPolicy: IfNotPresent
         src: /opt/dea-config/dev/services/wms/ows/ows_cfg.py
     ingress:
